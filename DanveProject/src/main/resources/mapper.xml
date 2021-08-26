@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="danve">
+ 	<select id="plist" resultType="com.danve.vo.PCVO" parameterType="map">
+ 		select * from p_table where p_idx between #{begin} and #{end}
+ 	</select>
+
+ 	<select id="mlist" resultType="com.danve.vo.MVO" parameterType="map">
+ 		select * from members where m_idx between #{begin} and #{end}
+ 	</select>
+
+ 	<select id="clist" resultType="com.danve.vo.CVO" parameterType="map">
+ 		select * from c_board where c_idx between #{begin} and #{end} order by writetime desc
+ 	</select>
+
+ 	<select id="gvlist" resultType="com.danve.vo.GVVO" parameterType="map">
+ 		select * from govegan where v_idx between #{begin} and #{end} order by writetime desc
+ 	</select>
+	
+	<select id="countPC" resultType="int">
+		select count(*) from p_table
+	</select>
+
+	<select id="countMember" resultType="int">
+		select count(*) from members
+	</select>
+
+	<select id="countCheer" resultType="int">
+		select count(*) from c_board
+	</select>
+	
+	<insert id="signUp" parameterType="com.danve.vo.MVO">
+		insert into members values(MEMBER_IDX.nextval,#{id},#{name},#{pwd},#{email},1)
+	</insert>
+
+	<insert id="writecc" parameterType="com.danve.vo.CVO">
+		insert into c_board values(c_board_seq.nextval,#{c_context},#{m_idx},#{name},sysdate)
+	</insert>
+
+	<insert id="writepc" parameterType="com.danve.vo.PCVO">
+		insert into p_table values(P_TABLE_NUM.nextval,#{r_writer},#{p_comment},sysdate,#{m_idx})
+	</insert>
+
+	<insert id="writegv" parameterType="com.danve.vo.CVO">
+		insert into govegan values(gv_seq.nextval,#{name},#{v_context},#{m_idx},sysdate)
+	</insert>
+	
+	<select id="groups" parameterType="String" resultType="String">
+		select groups from members where id=#{id}
+	</select>
+	
+	<select id="signInCheck" parameterType="map" resultType="com.danve.vo.MVO">
+		select * from members where id=#{id} and pwd=#{pwd}
+	</select>
+	<select id="onelist" resultType="com.danve.vo.PCVO" parameterType="String">
+		select * from p_table where p_idx=#{idx}
+	</select>
+	<select id="getName" parameterType="String" resultType="String">
+		select name from members where m_idx=#{m_idx}
+	</select>
+	<delete id="deletCU" parameterType="map">
+		delete from c_board where m_idx=#{m_idx} and c_idx=#{c_idx}
+	</delete>
+	<delete id="deleteMB" parameterType="String">
+		delete from members where m_idx=#{m_idx}
+	</delete>
+	<update id="changeGroups" parameterType="map">
+		update members set groups=#{idx} where m_idx=#{m_idx}
+	</update>
+ </mapper>
+ 
