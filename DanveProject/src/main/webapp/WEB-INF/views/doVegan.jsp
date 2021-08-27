@@ -74,24 +74,24 @@
 		<div class="contentBox">
 			<form action="" method="post">
 				<textarea id="test" name="v_context" cols="90" rows="10"
-					style="display: inline-block;" placeholder="¿ë±â³» ´ÙÁüÇØÁÖ¼¼¿ä!"></textarea>
+					style="display: inline-block;" placeholder="ìš©ê¸°ë‚´ ë‹¤ì§í•´ì£¼ì„¸ìš”!"></textarea>
 				<div style="display: inline-block; right: 0%;">
 					<div id="test_cnt">(0 / 200)</div>
-					<a id="goVegan" href="#">´ÙÁüÇÏ±â</a>
+					<a id="goVegan" href="#">ë‹¤ì§í•˜ê¸°</a>
 				</div>
 			</form>
 			<table id="ccTable">
 				<thead>
 					<tr>
-						<th width="80%">ºñ°Ç´ÙÁü</th>
-						<th width="20%">ÀÛ¼ºÀÚ</th>
+						<th width="80%">ë¹„ê±´ë‹¤ì§</th>
+						<th width="20%">ì‘ì„±ì</th>
 					</tr>
 				</thead>
 				<c:choose>
 					<c:when test="${empty gvlist}">
 						<tbody>
 							<tr>
-								<td colspan="3">ÇÔ²² ºñ°Å´ÏÁòÀ» ´ÙÁüÇØ¿ä!</td>
+								<td colspan="3">í•¨ê»˜ ë¹„ê±°ë‹ˆì¦˜ì„ ë‹¤ì§í•´ìš”!</td>
 							</tr>
 						</tbody>
 					</c:when>
@@ -114,16 +114,16 @@
 						<tfoot>
 							<tr>
 								<td colspan="3">
-									<%-- ÀÌÀü --%> <c:choose>
+									<%-- ì´ì „ --%> <c:choose>
 										<c:when test="${pvo.beginBlock <= pvo.pagePerBlock }">
 
 										</c:when>
 										<c:otherwise>
 											<span style="color: tomato; padding: 0.3em;"> <a
-												href="cheerUp.do?cPage=${pvo.beginBlock-pvo.pagePerBlock}">ÀÌÀüÀ¸·Î</a>
+												href="cheerUp.do?cPage=${pvo.beginBlock-pvo.pagePerBlock}">ì´ì „ìœ¼ë¡œ</a>
 											</span>
 										</c:otherwise>
-									</c:choose> &nbsp;&nbsp; <%-- ¹øÈ£ --%> <c:forEach
+									</c:choose> &nbsp;&nbsp; <%-- ë²ˆí˜¸ --%> <c:forEach
 										begin="${pvo.beginBlock }" end="${pvo.endBlock}" step="1"
 										var="k">
 										<c:choose>
@@ -135,13 +135,13 @@
 												</span>
 											</c:otherwise>
 										</c:choose>
-									</c:forEach> &nbsp;&nbsp; <%-- ´ÙÀ½ --%> <c:choose>
+									</c:forEach> &nbsp;&nbsp; <%-- ë‹¤ìŒ --%> <c:choose>
 										<c:when test="${pvo.endBlock >= pvo.totalPage}">
 
 										</c:when>
 										<c:otherwise>
 											<span style="color: tomato; padding: 0.3em;"> <a
-												href="cheerUp.do?cPage=${pvo.beginBlock+pvo.pagePerBlock}">´ÙÀ½À¸·Î</a>
+												href="cheerUp.do?cPage=${pvo.beginBlock+pvo.pagePerBlock}">ë‹¤ìŒìœ¼ë¡œ</a>
 											</span>
 										</c:otherwise>
 									</c:choose>
@@ -178,22 +178,22 @@
 				dataType : "text",
 				success : function(data) {
 					if (data == 2) {
-						alert("°Ô½Ã±Û ÀÛ¼ºÀº ·Î±×ÀÎÀ» ÇØ¾ß °¡´ÉÇÕ´Ï´Ù.");
+						alert("ê²Œì‹œê¸€ ì‘ì„±ì€ ë¡œê·¸ì¸ì„ í•´ì•¼ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 						location.href = 'signIn.do'
 					} else if (data == 1) {
-						alert("´ÙÁü ¿Ï·á! ³ë·ÂÇÏ¸é¼­ ÁöÄÑ³ª°¡¿ä!");
-						location.href = 'cheerUp.do'
+						alert("ë‹¤ì§ ì™„ë£Œ! ë…¸ë ¥í•˜ë©´ì„œ ì§€ì¼œë‚˜ê°€ìš”!");
+						location.href = 'goVegan.do'
 					} else {
-						alert("ÀÛ¼º¿¡ ½ÇÆĞÇß½À´Ï´Ù. °è¼ÓµÈ ½ÇÆĞÀÇ °æ¿ì ¹®ÀÇÁÖ¼¼¿ä")
+						alert("ì‘ì„±ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ê³„ì†ëœ ì‹¤íŒ¨ì˜ ê²½ìš° ë¬¸ì˜ì£¼ì„¸ìš”")
 					}
 				},
 				error : function() {
-					alert("ÀĞ±â½ÇÆĞ");
+					alert("ì½ê¸°ì‹¤íŒ¨");
 				}
 			});
 		});
 		$('.delCU').on('click',function(){
-			if(window.confirm('»èÁ¦µÈ ±ÛÀº µÇµ¹¸± ¼ö ¾ø½À´Ï´Ù.')){
+			if(window.confirm('ì‚­ì œëœ ê¸€ì€ ë˜ëŒë¦´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.')){
 				
 			$.ajax({
 				url : "deleteCheer.do",
@@ -205,14 +205,14 @@
 				dataType : "text",
 				success : function(data) {
 					if(data==1){
-						alert("»èÁ¦ÇÏ¿´½À´Ï´Ù.");
-						location.href = 'cheerUp.do'
+						alert("ì‚­ì œí•˜ì˜€ìŠµë‹ˆë‹¤.");
+						location.href = 'goVegan.do'
 					}else{
-						alert("»èÁ¦¿¡ ½ÇÆĞ ÇÏ¿´½À´Ï´Ù.");						
+						alert("ì‚­ì œì— ì‹¤íŒ¨ í•˜ì˜€ìŠµë‹ˆë‹¤.");						
 					}
 				},
 				error : function() {
-					alert("ÀĞ±â½ÇÆĞ");
+					alert("ì½ê¸°ì‹¤íŒ¨");
 				}
 			});
 			}
