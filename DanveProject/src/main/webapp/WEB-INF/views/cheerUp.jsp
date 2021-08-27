@@ -74,34 +74,34 @@
 		<%@include file="top.jsp"%>
 		<nav class="gnb-sub-menu">
 			<div>
-				<a href="docuP.do">¾î¶²½ÇÇè?</a> <a href="docuVideo.do">½ÇÇè¿µ»ó</a> <a
-					href="commentedList.do?cPage=1">Âü¿©ÀÚÈÄ±â</a> <a
+				<a href="docuP.do">ì–´ë–¤ì‹¤í—˜?</a> <a href="docuVideo.do">ì‹¤í—˜ì˜ìƒ</a> <a
+					href="commentedList.do?cPage=1">ì°¸ì—¬ìží›„ê¸°</a> <a
 					href="cheerUp.do?cPage=1"
-					style="color: #8a35ba; font-weight: bold;">ÀÀ¿øÇÑ¸¶µð</a>
+					style="color: #8a35ba; font-weight: bold;">ì‘ì›í•œë§ˆë””</a>
 			</div>
 		</nav>
 
 		<div class="contentBox">
 			<form action="" method="post">
 				<textarea id="test" name="c_context" cols="90" rows="10"
-					style="display: inline-block;" placeholder="´Üºñ¸¦ ÀÀ¿øÇØÁÖ¼¼¿ä!"></textarea>
+					style="display: inline-block;" placeholder="ë‹¨ë¹„ë¥¼ ì‘ì›í•´ì£¼ì„¸ìš”!"></textarea>
 				<div style="display: inline-block; right: 0%;">
 					<div id="test_cnt">(0 / 200)</div>
-					<a id="cheerWrite" value="ÀÀ¿øÇÏ±â" href="#">ÀÀ¿øÇÏ±â</a>
+					<a id="cheerWrite" value="ì‘ì›í•˜ê¸°" href="#">ì‘ì›í•˜ê¸°</a>
 				</div>
 			</form>
 			<table id="ccTable">
 				<thead>
 					<tr>
-						<th width="80%">ÀÀ¿ø ÇÑ¸¶µð</th>
-						<th width="20%">ÀÛ¼ºÀÚ</th>
+						<th width="80%">ì‘ì› í•œë§ˆë””</th>
+						<th width="20%">ìž‘ì„±ìž</th>
 					</tr>
 				</thead>
 				<c:choose>
 					<c:when test="${empty clist}">
 						<tbody>
 							<tr>
-								<td colspan="3">´Üºñ ÇÁ·ÎÁ§Æ®¸¦ ÀÀ¿øÇØÁÖ½Ç·¡¿ä?</td>
+								<td colspan="3">ë‹¨ë¹„ í”„ë¡œì íŠ¸ë¥¼ ì‘ì›í•´ì£¼ì‹¤ëž˜ìš”?</td>
 							</tr>
 						</tbody>
 					</c:when>
@@ -124,16 +124,16 @@
 						<tfoot>
 							<tr>
 								<td colspan="3">
-									<%-- ÀÌÀü --%> <c:choose>
+									<%-- ì´ì „ --%> <c:choose>
 										<c:when test="${pvo.beginBlock <= pvo.pagePerBlock }">
 
 										</c:when>
 										<c:otherwise>
 											<span style="color: tomato; padding: 0.3em;"> <a
-												href="cheerUp.do?cPage=${pvo.beginBlock-pvo.pagePerBlock}">ÀÌÀüÀ¸·Î</a>
+												href="cheerUp.do?cPage=${pvo.beginBlock-pvo.pagePerBlock}">ì´ì „ìœ¼ë¡œ</a>
 											</span>
 										</c:otherwise>
-									</c:choose> &nbsp;&nbsp; <%-- ¹øÈ£ --%> <c:forEach
+									</c:choose> &nbsp;&nbsp; <%-- ë²ˆí˜¸ --%> <c:forEach
 										begin="${pvo.beginBlock }" end="${pvo.endBlock}" step="1"
 										var="k">
 										<c:choose>
@@ -145,13 +145,13 @@
 												</span>
 											</c:otherwise>
 										</c:choose>
-									</c:forEach> &nbsp;&nbsp; <%-- ´ÙÀ½ --%> <c:choose>
+									</c:forEach> &nbsp;&nbsp; <%-- ë‹¤ìŒ --%> <c:choose>
 										<c:when test="${pvo.endBlock >= pvo.totalPage}">
 
 										</c:when>
 										<c:otherwise>
 											<span style="color: tomato; padding: 0.3em;"> <a
-												href="cheerUp.do?cPage=${pvo.beginBlock+pvo.pagePerBlock}">´ÙÀ½À¸·Î</a>
+												href="cheerUp.do?cPage=${pvo.beginBlock+pvo.pagePerBlock}">ë‹¤ìŒìœ¼ë¡œ</a>
 											</span>
 										</c:otherwise>
 									</c:choose>
@@ -188,22 +188,22 @@
 				dataType : "text",
 				success : function(data) {
 					if (data == 2) {
-						alert("°Ô½Ã±Û ÀÛ¼ºÀº ·Î±×ÀÎÀ» ÇØ¾ß °¡´ÉÇÕ´Ï´Ù.");
+						alert("ê²Œì‹œê¸€ ìž‘ì„±ì€ ë¡œê·¸ì¸ì„ í•´ì•¼ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 						location.href = 'signIn.do'
 					} else if (data == 1) {
-						alert("ÀÀ¿øÇØÁÖ¼Å¼­ °¨»çÇØ¿ä!");
+						alert("ì‘ì›í•´ì£¼ì…”ì„œ ê°ì‚¬í•´ìš”!");
 						location.href = 'cheerUp.do'
 					} else {
-						alert("ÀÛ¼º¿¡ ½ÇÆÐÇß½À´Ï´Ù. °è¼ÓµÈ ½ÇÆÐÀÇ °æ¿ì ¹®ÀÇÁÖ¼¼¿ä")
+						alert("ìž‘ì„±ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ê³„ì†ëœ ì‹¤íŒ¨ì˜ ê²½ìš° ë¬¸ì˜ì£¼ì„¸ìš”")
 					}
 				},
 				error : function() {
-					alert("ÀÐ±â½ÇÆÐ");
+					alert("ì½ê¸°ì‹¤íŒ¨");
 				}
 			});
 		});
 		$('.delCU').on('click',function(){
-			if(window.confirm('»èÁ¦µÈ ±ÛÀº µÇµ¹¸± ¼ö ¾ø½À´Ï´Ù.')){
+			if(window.confirm('ì‚­ì œëœ ê¸€ì€ ë˜ëŒë¦´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.')){
 				
 			$.ajax({
 				url : "deleteCheer.do",
@@ -215,14 +215,14 @@
 				dataType : "text",
 				success : function(data) {
 					if(data==1){
-						alert("»èÁ¦ÇÏ¿´½À´Ï´Ù.");
-						location.href = 'cheerUp.do'
+						alert("ì‚­ì œí•˜ì˜€ìŠµë‹ˆë‹¤.");
+						location.reload();
 					}else{
-						alert("»èÁ¦¿¡ ½ÇÆÐ ÇÏ¿´½À´Ï´Ù.");						
+						alert("ì‚­ì œì— ì‹¤íŒ¨ í•˜ì˜€ìŠµë‹ˆë‹¤.");						
 					}
 				},
 				error : function() {
-					alert("ÀÐ±â½ÇÆÐ");
+					alert("ì½ê¸°ì‹¤íŒ¨");
 				}
 			});
 			}
